@@ -1,0 +1,96 @@
+Giriş:
+Bu proje, insan parmak izlerinden alınan DNA örneklerinin bireylere özgü
+olduğunun keşfedildiği son araştırmaları temel alır. Bu nedenle, bilgisayar
+klavyelerinden alınan örneklerle kullanıcıyı tanımlamak mümkündür.
+Bu görev çok güçlü desenler sağlar ve tanıma oranı oldukça yüksektir.
+Ancak, daha zorlu bir görev, hangi elin (sol mu yoksa sağ mı) örneklerin
+alındığını belirlemektir. Bu projede, bireylerin DNA verileri üzerinden
+toplanan klinik verilerin sınıflandırma performansı değerlendirilmiştir.
+
+Veri:
+Toplamda 271 örnek bulunmaktadır (ilk 136 sol, sonraki 135 sağ el).
+Her bir örnek 3302 özellik içerir. Bu nedenle, her dosya 3302 x 271 girişli
+bir tablo içerir. 136 örnek sağ elden, 135 örnek ise sol elden toplanmıştır.
+Veri seti otu.csv adıyla sağlanmıştır. Dosyaların ilk satırı örnek adlarını
+içerirken, ikinci satır sol veya sağ elden toplandığını gösterir.
+
+Hedef:
+Bu proje ile en yüksek doğru sınıflandırma yüzdesine ulaşılması beklenmektedir.
+Bu amaçla, çeşitli algoritmalar ve çapraz doğrulamalar denenmiş olup neural
+network algoritması tercih edilmiştir. Ardından seçilen özelliklerle
+sınıflandırma yapılmıştır.
+
+Sınıflandırma Algoritmaları:
+Bir çok katmanlı algılayıcı (Multi-Layer Perceptron - MLP) kullanarak bir
+sınıflandırma modeli oluşturmaktadır. Özellikle, MLPClassifier sınıfı,
+çok katmanlı sinir ağı tabanlı bir sınıflandırma algoritmasıdır ve bu örnekte
+kullanılmaktadır.
+
+Performans Ölçütleri:
+Program performansının çıktısı olarak hassasiyet, özgüllük ve AUC hesaplanmıştır.
+
+Hassasiyet: = İlk sınıfın doğru tahmin sayısı / İlk sınıftaki toplam örnek sayısı
+
+Özgüllük: = İkinci sınıfın doğru tahmin sayısı / İkinci sınıftaki toplam örnek sayısı
+
+AUC: ROC eğrisi altındaki alan.
+
+*************************************************************************************
+
+Veri Okuma ve Düzenleme:
+
+Kütüphaneler: pandas ve sklearn.preprocessing.LabelEncoder kullanıldı.
+otu.csv adlı veri seti pd.read_csv fonksiyonu ile okundu. DtypeWarning önlemek
+adına tüm veri seti string olarak okundu. Veri seti, girdi (X) ve çıktı (y)
+verilerine ayrıldı. Etiketler, LabelEncoder ile sayısal değerlere dönüştürüldü.
+
+Veri Seti Bölme:
+
+train_test_split fonksiyonu kullanılarak veri seti eğitim ve test setlerine
+bölündü.
+Normalizasyon ve MLP Modeli Oluşturma:
+
+StandardScaler ile veri normalize edildi.
+MLPClassifier ile çok katmanlı algılayıcı (MLP) modeli oluşturuldu. Bu model,
+veri setini eğitim sürecinde kullanacak.
+
+Model Eğitimi:
+
+fit fonksiyonu ile model eğitildi.
+
+Tahmin ve Performans Değerlendirmesi:
+
+Test seti üzerinde tahminler yapıldı.
+Tahminlerin performansı değerlendirildi ve sonuçlar ekrana yazdırıldı.
+
+Performans Değerlendirmesi Çıktıları
+
+Karışıklık Matrisi:
+
+ [[16  6]
+ [ 9 24]]
+
+Sınıflandırma Raporu:
+
+                   precision    recall    f1-score    support
+
+         0          0.64        0.73      0.68        22
+         1          0.80        0.73      0.76        33
+
+accuracy                           0.73          55
+macro avg       0.72      0.73     0.72          55
+
+weighted avg 0.74 0.73 0.73 55
+
+Accuracy: 0.7272727272727273
+
+Sensitivity : 0.7272727272727273
+
+Specificity : 0.7272727272727273
+
+ROC AUC : 0.7273
+
+Bu çıktılara göre, modelin genel performansının iyi olduğu görülmektedir.
+Hassasiyet ve özgünlük dengeli bir şekilde yüksektir.
+Bu bilgiler, modelin sınıflandırma görevini başarılı bir şekilde
+gerçekleştirdiğini göstermektedir.

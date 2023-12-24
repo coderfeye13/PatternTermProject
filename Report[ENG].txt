@@ -1,0 +1,96 @@
+Introduction:
+This project aims to analyze DNA samples from human fingerprints
+based on the latest research that has been discovered. Therefore, the computer
+It is possible to identify the user with samples taken from their keyboard.
+This task provides very strong patterns, and the recognition rate is quite high.
+However, a more challenging task is to determine which hand (left or right)
+to determine whether the DNA data was collected. In this project, DNA data from individuals
+The classification performance of the collected clinical data was evaluated.
+
+Data:
+There are 271 samples in total (first 136 left hands, next 135 right hands).
+Each sample contains 3302 features. Therefore, each file has 3302 x 271 entries.
+contains a table. 136 samples were collected from the right hand and 135 from the left hand.
+The data set is provided as otu.csv. The first line of the files contains the sample names
+while the second line indicates whether it was collected from the left or right hand.
+
+Objective:
+This project aims to achieve the highest percentage of correct classifications.
+For this purpose, various algorithms and cross-validations were tried and a neural
+network algorithm was preferred. Then, with the selected features classification was performed.
+
+Classification Algorithms:
+Using a Multi-Layer Perceptron (MLP), a
+classification model. In particular, the MLPClassifier class, is a multilayer neural
+network-based classification algorithm and in this example is used.
+
+Performance Measures:
+
+Sensitivity, specificity, and AUC were calculated as outputs of program performance.
+
+Sensitivity: = Number of correct predictions of the first class / Total number of samples in the first class
+
+Specificity = Number of correct guesses in the second class / Total number of samples in the second class
+
+AUC: Area under the ROC curve.
+
+*************************************************************************************
+
+Data Reading and Editing:
+
+Libraries: Pandas and Sklearn. preprocessing. Label encoders were used.
+The data set otu.csv was read with the pd.read_csv function. Prevent DtypeWarning
+The entire data set was read as a string. Data set, input (X) and output (y)
+data. Labels were converted to numeric values with the LabelEncoder.
+
+Data Set Splitting:
+
+The data set was split into training and test sets using the train_test_split function.
+divided into
+
+Normalization and MLP Model Building:
+
+The data was normalized with StandardScaler.
+A multilayer perceptron (MLP) model was created with MLPClassifier. This model,
+will use the dataset in the training process.
+
+Model Training:
+
+The model was trained with fit function.
+
+Prediction and Performance Evaluation:
+
+Predictions were made on the test set. The performance of the predictions was
+evaluated, and the results were printed on the screen.
+
+Performance Evaluation Outputs
+
+Confusion Matrix:
+
+ [[16 6]
+ [ 9 24]]
+
+Classification Report:
+
+               precision    recall      f1-score    support
+
+         0      0.64        0.73        0.68        22
+         1      0.80        0.73        0.76        33
+
+accuracy 0.73 55
+macro avg 0.72 0.73 0.72 55
+
+weighted avg 0.74 0.73 0.73 55
+
+Accuracy: 0.7272727272727273
+
+Sensitivity : 0.7272727272727273
+
+Specificity : 0.7272727272727273
+
+ROC AUC : 0.7273
+
+According to these outputs, the overall performance of the model is good.
+Accuracy and specificity are balanced and high.
+This information shows that the model performs the classification task successfully.
+that it has realized.
